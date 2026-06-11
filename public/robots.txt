@@ -1,0 +1,5 @@
+User-agent: *
+Allow: /
+
+# Después de publicar, reemplaza REEMPLAZA-TU-URL por tu dominio real (ej. https://quiropracticadecolombia.com)
+Sitemap: https://REEMPLAZA-TU-URL/sitemap.xml
