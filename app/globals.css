@@ -1652,9 +1652,14 @@ ul, ol {
   }
 
   .causa-split {
-    grid-template-columns: 0.95fr 1.05fr;
-    gap: 3.5rem;
-    align-items: center;
+    grid-template-columns: minmax(280px, 0.9fr) 1.1fr;
+    gap: 3rem;
+    align-items: start;
+  }
+
+  .causa-gallery {
+    position: sticky;
+    top: calc(var(--header-h) + 1.25rem);
   }
 
   .efecto-grid {
@@ -1673,8 +1678,67 @@ ul, ol {
   .nosotros-grid {
     display: grid;
     grid-template-columns: 1fr 1fr;
-    gap: 3rem;
-    align-items: center;
+    gap: 3.5rem;
+    align-items: start;
+  }
+
+  .metodo-media,
+  .nosotros-media {
+    position: sticky;
+    top: calc(var(--header-h) + 1.25rem);
+  }
+
+  .metodo-media .section-photo--tall {
+    aspect-ratio: auto;
+    height: auto;
+    max-height: calc(100vh - var(--header-h) - 2.5rem);
+    object-fit: contain;
+    object-position: center top;
+    background: var(--color-white);
+  }
+
+  .nosotros-media .section-photo--full {
+    max-height: calc(100vh - var(--header-h) - 2.5rem);
+  }
+
+  .section-header--left h2 {
+    max-width: 26ch;
+  }
+
+  /* Hero — composición editorial en pantalla ancha */
+  .hero {
+    align-items: stretch;
+  }
+
+  .hero-img {
+    object-position: 60% 18%;
+  }
+
+  .hero-overlay {
+    background:
+      linear-gradient(
+        100deg,
+        rgba(42, 36, 36, 0.94) 0%,
+        rgba(42, 36, 36, 0.82) 24%,
+        rgba(42, 36, 36, 0.48) 44%,
+        rgba(42, 36, 36, 0.16) 60%,
+        transparent 76%
+      ),
+      linear-gradient(
+        to top,
+        rgba(42, 36, 36, 0.58) 0%,
+        rgba(42, 36, 36, 0.2) 32%,
+        transparent 58%
+      );
+  }
+
+  .hero-content {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-self: stretch;
+    min-height: calc(100svh - var(--header-h));
+    padding: 3rem 0 4.5rem;
   }
 
   .nosotros-grid {
@@ -1709,7 +1773,26 @@ ul, ol {
 
 @media (min-width: 1024px) {
   .hero-title {
-    max-width: 22ch;
+    max-width: 28ch;
+    font-size: clamp(2.15rem, 3.2vw, 3.2rem);
+  }
+
+  .hero-subtitle {
+    max-width: 46ch;
+    font-size: 1.125rem;
+  }
+
+  .hero-content {
+    max-width: 56%;
+  }
+
+  .hero-img {
+    object-position: 56% 16%;
+  }
+
+  .causa-split {
+    grid-template-columns: 0.92fr 1.08fr;
+    gap: 4rem;
   }
 
   .symptoms-grid {
@@ -1718,6 +1801,21 @@ ul, ol {
 
   .section {
     padding: 6rem 0;
+  }
+}
+
+@media (min-width: 1280px) {
+  .container,
+  .header-inner {
+    width: min(100% - 3rem, 72rem);
+  }
+
+  .hero-img {
+    object-position: 54% 14%;
+  }
+
+  .hero-content {
+    max-width: 50%;
   }
 }
 
