@@ -1711,24 +1711,25 @@ ul, ol {
   }
 
   .hero-img {
-    object-position: 60% 18%;
+    object-position: 72% 20%;
+    filter: brightness(0.9) saturate(0.92);
   }
 
   .hero-overlay {
     background:
       linear-gradient(
-        100deg,
-        rgba(42, 36, 36, 0.94) 0%,
-        rgba(42, 36, 36, 0.82) 24%,
-        rgba(42, 36, 36, 0.48) 44%,
-        rgba(42, 36, 36, 0.16) 60%,
-        transparent 76%
+        90deg,
+        rgba(42, 36, 36, 0.97) 0%,
+        rgba(42, 36, 36, 0.92) 26%,
+        rgba(42, 36, 36, 0.62) 42%,
+        rgba(42, 36, 36, 0.22) 56%,
+        transparent 70%
       ),
       linear-gradient(
         to top,
-        rgba(42, 36, 36, 0.58) 0%,
-        rgba(42, 36, 36, 0.2) 32%,
-        transparent 58%
+        rgba(42, 36, 36, 0.62) 0%,
+        rgba(42, 36, 36, 0.18) 36%,
+        transparent 55%
       );
   }
 
@@ -1739,6 +1740,67 @@ ul, ol {
     align-self: stretch;
     min-height: calc(100svh - var(--header-h));
     padding: 3rem 0 4.5rem;
+    max-width: 58%;
+  }
+
+  .hero-eyebrow {
+    font-size: 0.88rem;
+    margin-bottom: 1.15rem;
+  }
+
+  .hero-title {
+    max-width: 24ch;
+    font-size: clamp(2.05rem, 4.2vw, 3rem);
+    text-shadow: 0 2px 28px rgba(0, 0, 0, 0.4);
+  }
+
+  .hero-subtitle {
+    max-width: 44ch;
+    font-size: 1.12rem;
+    color: rgba(255, 255, 255, 0.95);
+    text-shadow: 0 1px 16px rgba(0, 0, 0, 0.35);
+  }
+
+  .hero-actions .btn {
+    font-size: 1rem;
+    padding: 1.05rem 1.65rem;
+  }
+
+  .section-header h2,
+  .metodo-content h2,
+  .nosotros-content h2 {
+    font-size: clamp(1.85rem, 3.2vw, 2.5rem);
+  }
+
+  .section-tag {
+    font-size: 0.78rem;
+  }
+
+  .section-lead,
+  .causa-text p,
+  .section-prose p {
+    font-size: 1.1rem;
+  }
+
+  .efecto-card h3 {
+    font-size: 1.08rem;
+  }
+
+  .efecto-card p,
+  .symptom-card p {
+    font-size: 0.95rem;
+  }
+
+  .symptom-card h3 {
+    font-size: 1.08rem;
+  }
+
+  .metodo-pillars strong {
+    font-size: 1.02rem;
+  }
+
+  .metodo-pillars li > div > span {
+    font-size: 0.92rem;
   }
 
   .nosotros-grid {
@@ -1773,21 +1835,43 @@ ul, ol {
 
 @media (min-width: 1024px) {
   .hero-title {
-    max-width: 28ch;
-    font-size: clamp(2.15rem, 3.2vw, 3.2rem);
+    max-width: 30ch;
+    font-size: clamp(2.5rem, 3.6vw, 3.65rem);
   }
 
   .hero-subtitle {
-    max-width: 46ch;
-    font-size: 1.125rem;
+    max-width: 48ch;
+    font-size: 1.28rem;
+    line-height: 1.65;
+  }
+
+  .hero-eyebrow {
+    font-size: 0.95rem;
   }
 
   .hero-content {
-    max-width: 56%;
+    max-width: 54%;
   }
 
   .hero-img {
-    object-position: 56% 16%;
+    object-position: 68% 18%;
+  }
+
+  .section-header h2,
+  .metodo-content h2,
+  .nosotros-content h2 {
+    font-size: clamp(2rem, 2.8vw, 2.75rem);
+  }
+
+  .section-lead,
+  .causa-text p,
+  .section-prose p {
+    font-size: 1.15rem;
+    line-height: 1.7;
+  }
+
+  .section-tag {
+    font-size: 0.82rem;
   }
 
   .causa-split {
@@ -1811,11 +1895,19 @@ ul, ol {
   }
 
   .hero-img {
-    object-position: 54% 14%;
+    object-position: 65% 16%;
   }
 
   .hero-content {
-    max-width: 50%;
+    max-width: 52%;
+  }
+
+  .hero-title {
+    font-size: clamp(2.65rem, 3.4vw, 3.85rem);
+  }
+
+  .hero-subtitle {
+    font-size: 1.32rem;
   }
 }
 
