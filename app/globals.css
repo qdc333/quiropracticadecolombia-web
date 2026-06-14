@@ -1670,14 +1670,59 @@ ul, ol {
   }
 
   .causa-split {
-    grid-template-columns: minmax(280px, 0.9fr) 1.1fr;
-    gap: 3rem;
-    align-items: start;
+    grid-template-columns: 1fr 1fr;
+    gap: 2.75rem;
+    align-items: center;
   }
 
   .causa-gallery {
     position: sticky;
     top: calc(var(--header-h) + 1.25rem);
+    width: 100%;
+  }
+
+  .causa-photo img,
+  .metodo-media .section-photo,
+  .nosotros-media .section-photo--full {
+    width: 100%;
+    max-height: min(52vh, 520px);
+    height: auto;
+    object-fit: contain;
+    object-position: center top;
+    background: var(--color-white);
+    box-shadow: none;
+  }
+
+  .nosotros-media .section-photo--full {
+    object-position: center center;
+    max-height: min(56vh, 560px);
+  }
+
+  .metodo-media,
+  .nosotros-media {
+    position: sticky;
+    top: calc(var(--header-h) + 1.25rem);
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: var(--color-white);
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow-card);
+  }
+
+  .nosotros-media {
+    min-height: min(48vh, 460px);
+  }
+
+  .causa-photo {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .causa-photo img {
+    flex: 1;
+    min-height: 0;
   }
 
   .efecto-grid {
@@ -1696,27 +1741,8 @@ ul, ol {
   .nosotros-grid {
     display: grid;
     grid-template-columns: 1fr 1fr;
-    gap: 3.5rem;
-    align-items: start;
-  }
-
-  .metodo-media,
-  .nosotros-media {
-    position: sticky;
-    top: calc(var(--header-h) + 1.25rem);
-  }
-
-  .metodo-media .section-photo--tall {
-    aspect-ratio: auto;
-    height: auto;
-    max-height: calc(100vh - var(--header-h) - 2.5rem);
-    object-fit: contain;
-    object-position: center top;
-    background: var(--color-white);
-  }
-
-  .nosotros-media .section-photo--full {
-    max-height: calc(100vh - var(--header-h) - 2.5rem);
+    gap: 2.75rem;
+    align-items: center;
   }
 
   .section-header--left h2 {
@@ -1902,8 +1928,13 @@ ul, ol {
   }
 
   .causa-split {
-    grid-template-columns: 0.92fr 1.08fr;
-    gap: 4rem;
+    gap: 3rem;
+  }
+
+  .causa-photo img,
+  .metodo-media .section-photo,
+  .nosotros-media .section-photo--full {
+    max-height: min(54vh, 540px);
   }
 
   .symptoms-grid {
