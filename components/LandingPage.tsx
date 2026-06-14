@@ -2,15 +2,20 @@
 
 import {
   AudioLines,
+  Bone,
   Brain,
   CircleAlert,
+  ClipboardCheck,
+  Crosshair,
   Flame,
+  Leaf,
   Mail,
   MapPin,
   Orbit,
   Phone,
   ScanFace,
   UnfoldVertical,
+  UserRound,
   Zap,
 } from "lucide-react";
 import { useEffect } from "react";
@@ -105,22 +110,13 @@ export default function LandingPage({ hero, contact }: Props) {
               <div className="causa-gallery reveal" aria-label="Fotos del Dr. Kevin en la clínica">
                 <figure className="causa-photo causa-photo--main">
                   <img
-                    src="/images/dr-kevin-metodo.png"
-                    alt="Dr. Kevin Ernesto junto a cartilla del sistema nervioso autónomo"
+                    src="/images/dr-kevin-causa.png"
+                    alt="Dr. Kevin Ernesto en consultorio, especialista en cuidado cervical superior"
                     width={600}
                     height={800}
                     loading="lazy"
                   />
-                  <figcaption>Sistema nervioso y columna cervical</figcaption>
-                </figure>
-                <figure className="causa-photo causa-photo--accent">
-                  <img
-                    src="/images/dr-kevin-nosotros.png"
-                    alt="Dr. Kevin Ernesto en consultorio"
-                    width={500}
-                    height={600}
-                    loading="lazy"
-                  />
+                  <figcaption>Dr. Kevin Ernesto · Quiropráctica de Colombia</figcaption>
                 </figure>
               </div>
 
@@ -238,9 +234,9 @@ export default function LandingPage({ hero, contact }: Props) {
           <div className="container metodo-grid">
             <div className="metodo-media reveal">
               <img
-                src="/images/hero-fondo.png"
+                src="/images/dr-kevin-metodo.png"
                 alt="Dr. Kevin Ernesto en consultorio durante evaluación clínica"
-                className="section-photo"
+                className="section-photo section-photo--tall"
                 width={600}
                 height={800}
                 loading="lazy"
@@ -250,30 +246,47 @@ export default function LandingPage({ hero, contact }: Props) {
             <div className="metodo-content reveal">
               <span className="section-tag">Nuestra solución</span>
               <h2 id="metodo-title">No es un «traqueo de huesos». Es precisión neurológica.</h2>
-              <p>
-                Nuestro método es un vehículo natural y no invasivo. No adivinamos ni hacemos movimientos
-                bruscos. A través de un diagnóstico clínico avanzado, identificamos exactamente qué vértebra
-                cervical está interfiriendo con tu sistema nervioso.
-              </p>
-              <p>
-                Aplicamos un ajuste específico para restaurar la posición de la vértebra, eliminar la presión
-                sobre el nervio y permitir que la inteligencia natural de tu cuerpo haga lo que mejor sabe
-                hacer: funcionar al 100% de su capacidad y sanar.
-              </p>
+              <div className="section-prose">
+                <p>
+                  Nuestro método es un vehículo natural y no invasivo. No adivinamos ni hacemos movimientos
+                  bruscos. A través de un diagnóstico clínico avanzado, identificamos exactamente qué vértebra
+                  cervical está interfiriendo con tu sistema nervioso.
+                </p>
+                <p>
+                  Aplicamos un ajuste específico para restaurar la posición de la vértebra, eliminar la presión
+                  sobre el nervio y permitir que la inteligencia natural de tu cuerpo haga lo que mejor sabe
+                  hacer: funcionar al 100% de su capacidad y sanar.
+                </p>
+              </div>
 
               <ul className="metodo-pillars">
-                <li>
-                  <strong>Diagnóstico avanzado</strong>
-                  <span>Identificación exacta de la vértebra afectada</span>
-                </li>
-                <li>
-                  <strong>Ajuste específico</strong>
-                  <span>Sin movimientos bruscos ni adivinanzas</span>
-                </li>
-                <li>
-                  <strong>Sanación natural</strong>
-                  <span>El cuerpo recupera su capacidad al 100%</span>
-                </li>
+                {[
+                  {
+                    icon: ClipboardCheck,
+                    title: "Diagnóstico avanzado",
+                    text: "Identificación exacta de la vértebra afectada",
+                  },
+                  {
+                    icon: Crosshair,
+                    title: "Ajuste específico",
+                    text: "Sin movimientos bruscos ni adivinanzas",
+                  },
+                  {
+                    icon: Leaf,
+                    title: "Sanación natural",
+                    text: "El cuerpo recupera su capacidad al 100%",
+                  },
+                ].map(({ icon: Icon, title, text }) => (
+                  <li key={title}>
+                    <span className="icon-wrap" aria-hidden="true">
+                      <Icon size={22} strokeWidth={2} />
+                    </span>
+                    <div>
+                      <strong>{title}</strong>
+                      <span>{text}</span>
+                    </div>
+                  </li>
+                ))}
               </ul>
             </div>
           </div>
@@ -284,39 +297,42 @@ export default function LandingPage({ hero, contact }: Props) {
             <div className="nosotros-content reveal">
               <span className="section-tag">Quiénes somos</span>
               <h2 id="nosotros-title">Elevando el estándar de la salud en Colombia</h2>
-              <p>
-                <strong>Quiropráctica de Colombia</strong>, liderada por el <strong>Dr. Kevin Ernesto</strong>,
-                nació con una misión clara: sacar a las personas del ciclo infinito de la medicación temporal y
-                ofrecerles una solución natural, real y sostenible.
-              </p>
-              <p>
-                Somos una clínica especializada en el cuidado neurológico estructural. Entendemos que el cuerpo
-                humano no tiene límites cuando su sistema de comunicación está libre de interferencias. Nuestro
-                compromiso es brindarte un cuidado quiropráctico de primer nivel, basado en ciencia, biomecánica y
-                resultados objetivos.
-              </p>
+              <div className="section-prose">
+                <p>
+                  <strong>Quiropráctica de Colombia</strong>, liderada por el <strong>Dr. Kevin Ernesto</strong>,
+                  nació con una misión clara: sacar a las personas del ciclo infinito de la medicación temporal y
+                  ofrecerles una solución natural, real y sostenible.
+                </p>
+                <p>
+                  Somos una clínica especializada en el cuidado neurológico estructural. Entendemos que el cuerpo
+                  humano no tiene límites cuando su sistema de comunicación está libre de interferencias. Nuestro
+                  compromiso es brindarte un cuidado quiropráctico de primer nivel, basado en ciencia, biomecánica y
+                  resultados objetivos.
+                </p>
+              </div>
 
               <div className="trust-badges">
-                <div className="trust-badge">
-                  <span className="trust-badge-value">100%</span>
-                  <span className="trust-badge-label">Enfoque natural</span>
-                </div>
-                <div className="trust-badge">
-                  <span className="trust-badge-value">C1–C3</span>
-                  <span className="trust-badge-label">Zona cervical superior</span>
-                </div>
-                <div className="trust-badge">
-                  <span className="trust-badge-value">Dr. Kevin</span>
-                  <span className="trust-badge-label">Liderazgo clínico</span>
-                </div>
+                {[
+                  { icon: Leaf, value: "100%", label: "Enfoque natural" },
+                  { icon: Bone, value: "C1–C3", label: "Zona cervical superior" },
+                  { icon: UserRound, value: "Dr. Kevin", label: "Liderazgo clínico" },
+                ].map(({ icon: Icon, value, label }) => (
+                  <div className="trust-badge" key={label}>
+                    <span className="trust-badge-icon" aria-hidden="true">
+                      <Icon size={20} strokeWidth={2} />
+                    </span>
+                    <span className="trust-badge-value">{value}</span>
+                    <span className="trust-badge-label">{label}</span>
+                  </div>
+                ))}
               </div>
             </div>
 
             <div className="nosotros-media reveal">
               <img
                 src="/images/dr-kevin-nosotros.png"
-                alt="Dr. Kevin Ernesto en la clínica, frente a cartilla del sistema nervioso autónomo"
-                className="section-photo section-photo--tall"
+                alt="Dr. Kevin Ernesto, director clínico de Quiropráctica de Colombia"
+                className="section-photo section-photo--full"
                 width={600}
                 height={800}
                 loading="lazy"
