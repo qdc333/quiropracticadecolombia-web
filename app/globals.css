@@ -1081,6 +1081,9 @@ ul, ol {
 
 .map-block {
   margin-top: 0.5rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 .map-title {
@@ -1098,13 +1101,18 @@ ul, ol {
   line-height: 1.5;
 }
 
-.map-link-btn {
-  margin-top: 1rem;
-  max-width: 22rem;
+.map-link-btn.btn--outline {
+  display: flex;
+  width: auto;
+  min-width: min(100%, 20rem);
+  margin-top: 1.25rem;
   margin-inline: auto;
+  padding: 0.9rem 2rem;
 }
 
 .map-frame-wrap {
+  width: 100%;
+  align-self: stretch;
   border-radius: var(--radius-lg);
   overflow: hidden;
   box-shadow: var(--shadow-card);
@@ -1651,6 +1659,16 @@ ul, ol {
     padding: 0.55rem 1.1rem;
   }
 
+  /* PC: contenido más condensado (similar a zoom 125% sin afectar móvil) */
+  html {
+    font-size: 106.25%;
+  }
+
+  .container,
+  .header-inner {
+    width: min(100% - 3rem, 56rem);
+  }
+
   .causa-split {
     grid-template-columns: minmax(280px, 0.9fr) 1.1fr;
     gap: 3rem;
@@ -1834,6 +1852,15 @@ ul, ol {
 }
 
 @media (min-width: 1024px) {
+  html {
+    font-size: 109.375%;
+  }
+
+  .container,
+  .header-inner {
+    width: min(100% - 3.5rem, 58rem);
+  }
+
   .hero-title {
     max-width: 30ch;
     font-size: clamp(2.5rem, 3.6vw, 3.65rem);
@@ -1889,9 +1916,13 @@ ul, ol {
 }
 
 @media (min-width: 1280px) {
+  html {
+    font-size: 112.5%;
+  }
+
   .container,
   .header-inner {
-    width: min(100% - 3rem, 72rem);
+    width: min(100% - 4rem, 58rem);
   }
 
   .hero-img {
