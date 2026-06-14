@@ -6,7 +6,5 @@ out
 *.tsbuildinfo
 public/uploads
 
-# Repos separados — no van en quiropractica-web
-backend/
-frontend/
 legacy/
+frontend/

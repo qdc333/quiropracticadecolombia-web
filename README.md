@@ -1,71 +1,32 @@
-# Quiropráctica de Colombia
+# Quiropráctica de Colombia — Sitio web
 
-Proyecto dividido en **dos repos** para GitHub:
+Landing page estática en Next.js para la clínica quiropráctica en Barranquilla.
 
-| Carpeta | Qué es | Dónde desplegar |
-|---------|--------|-----------------|
-| **`frontend/`** | Sitio Next.js (público + panel admin UI) | **Vercel** |
-| **`backend/`** | API Express + MongoDB + pagos Wompi | **Railway** |
+## Desarrollo local
 
-## Probar ahora (sin MongoDB)
-
-**Solo ver el diseño del sitio:**
 ```powershell
-cd frontend
+cd C:\Users\Link\Projects\quiropractica-colombia
 npm install
 npm run dev
 ```
-→ http://localhost:3000 (`NEXT_PUBLIC_USE_MOCK=true`)
 
-**Probar sitio + admin + misiones (sin MongoDB):**
-```powershell
-# Terminal 1
-cd backend
-npm install
-npm run dev
+Abre http://localhost:3000
 
-# Terminal 2 — en frontend/.env.local pon NEXT_PUBLIC_USE_MOCK=false
-cd frontend
-npm run dev
-```
+## Despliegue
 
-- Sitio: http://localhost:3000
-- Admin: http://localhost:3000/admin/login
-- API: http://localhost:4000
+Sube este repositorio a **Vercel**. Solo necesitas la variable opcional:
 
-Credenciales admin (modo mock): las de `ADMIN_EMAIL` / `ADMIN_PASSWORD` en `backend/.env`
-
-## Cuando MongoDB funcione
-
-En `backend/.env`:
 ```env
-USE_MOCK_DATA=false
-DATABASE_URL="mongodb://127.0.0.1:27017/quiropractica-colombia"
+NEXT_PUBLIC_SITE_URL=https://tu-dominio.vercel.app
 ```
 
-```powershell
-cd backend
-npx prisma db push
-npm run db:seed
-```
+## Formulario de contacto
 
-## Subir a GitHub
+El formulario envía los datos a Gmail mediante [FormSubmit.co](https://formsubmit.co), configurado en `components/ConsultaForm.tsx` con el correo de `lib/site.ts`.
 
-Crea **dos repositorios** y sube cada carpeta por separado:
+## Estructura
 
-```powershell
-cd frontend
-git init
-git add .
-git commit -m "Frontend Quiropráctica de Colombia"
-# git remote add origin ...
-# git push
-
-cd ..\backend
-git init
-git add .
-git commit -m "Backend API Quiropráctica de Colombia"
-# git push
-```
-
-La carpeta raíz antigua (`app/`, `components/` en la raíz) es la versión monolito anterior — usa **`frontend/`** y **`backend/`**.
+- `app/(site)/` — página principal y página de gracias
+- `components/` — landing, header, footer, formulario
+- `lib/site.ts` — WhatsApp, correos, Instagram
+- `public/images/` — imágenes del sitio

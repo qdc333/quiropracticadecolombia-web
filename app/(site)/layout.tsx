@@ -1,6 +1,5 @@
 import type { Metadata, Viewport } from "next";
 import { Manrope, Newsreader } from "next/font/google";
-import { CartProvider } from "@/components/cart/CartContext";
 import "../globals.css";
 
 const manrope = Manrope({
@@ -77,7 +76,7 @@ export default function SiteLayout({ children }: { children: React.ReactNode }) 
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
       />
-      <CartProvider>{children}</CartProvider>
+      {children}
     </div>
   );
 }

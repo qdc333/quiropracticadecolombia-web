@@ -17,7 +17,6 @@ import { useEffect } from "react";
 import ConsultaForm from "@/components/ConsultaForm";
 import Footer from "@/components/Footer";
 import Header from "@/components/Header";
-import MissionsGrid, { type MissionCard } from "@/components/MissionsGrid";
 import WhatsAppFloat from "@/components/WhatsAppFloat";
 import { useInstagramStats } from "@/hooks/useInstagramStats";
 import { useReveal } from "@/hooks/useReveal";
@@ -34,10 +33,9 @@ function statClass(value: string) {
 type Props = {
   hero: HeroContent;
   contact: ContactContent;
-  missions: MissionCard[];
 };
 
-export default function LandingPage({ hero, contact, missions }: Props) {
+export default function LandingPage({ hero, contact }: Props) {
   useReveal();
   useScrollSpy();
   const igStats = useInstagramStats();
@@ -324,28 +322,6 @@ export default function LandingPage({ hero, contact, missions }: Props) {
                 loading="lazy"
               />
             </div>
-          </div>
-        </section>
-
-        <section className="section section--white" id="misiones" aria-labelledby="misiones-title">
-          <div className="container">
-            <div className="section-header reveal">
-              <span className="section-tag">Misiones</span>
-              <h2 id="misiones-title">Próximas misiones y eventos</h2>
-              <p className="section-lead">
-                Capacitaciones, viajes y experiencias que puedes reservar en línea.
-              </p>
-            </div>
-            <div className="reveal">
-              <MissionsGrid missions={missions} />
-            </div>
-            {missions.length > 0 && (
-              <p className="missions-more reveal">
-                <a href="/misiones" className="btn btn--ghost">
-                  Ver todas las misiones
-                </a>
-              </p>
-            )}
           </div>
         </section>
 

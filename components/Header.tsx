@@ -8,9 +8,7 @@ const NAV_ITEMS = [
   { href: "#especialidad", label: "Especialidad" },
   { href: "#metodo", label: "Método" },
   { href: "#nosotros", label: "Nosotros" },
-  { href: "#misiones", label: "Misiones" },
   { href: "#redes", label: "Redes" },
-  { href: "/carrito", label: "Carrito", external: true },
   { href: "#contacto", label: "Agendar", cta: true },
 ];
 

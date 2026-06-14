@@ -1,4 +1,4 @@
-/* ===== Design tokens — rojo apagado + blanco ===== */
+﻿/* ===== Design tokens â€” rojo apagado + blanco ===== */
 :root {
   --color-primary: #9e4a4a;
   --color-primary-dark: #7d3a3a;
@@ -146,7 +146,7 @@ ul, ol {
   font-size: 0.72rem;
 }
 
-/* Nav — mobile first */
+/* Nav â€” mobile first */
 .nav-toggle {
   display: flex;
   flex-direction: column;
@@ -503,7 +503,7 @@ ul, ol {
   max-width: 52ch;
 }
 
-/* ===== Causa — galería + tarjetas ===== */
+/* ===== Causa â€” galerÃ­a + tarjetas ===== */
 .causa-split {
   display: grid;
   grid-template-columns: 1fr;
@@ -645,7 +645,7 @@ ul, ol {
   line-height: 1.5;
 }
 
-/* ===== Especialidad — layout dividido ===== */
+/* ===== Especialidad â€” layout dividido ===== */
 .section-intro-split {
   display: grid;
   grid-template-columns: 1fr;
@@ -718,7 +718,7 @@ ul, ol {
   max-width: 28rem;
 }
 
-/* ===== Método ===== */
+/* ===== MÃ©todo ===== */
 .metodo-grid {
   display: flex;
   flex-direction: column;
@@ -1242,7 +1242,7 @@ ul, ol {
 }
 
 /* ===== Tablet+ ===== */
-/* ===== Solo celular: menú completo + imágenes bajo títulos ===== */
+/* ===== Solo celular: menÃº completo + imÃ¡genes bajo tÃ­tulos ===== */
 @media (max-width: 767px) {
   .nav-backdrop {
     display: block;
@@ -1275,7 +1275,7 @@ ul, ol {
     animation: none;
   }
 
-  /* Causa: título → imágenes → texto → tarjetas */
+  /* Causa: tÃ­tulo â†’ imÃ¡genes â†’ texto â†’ tarjetas */
   .causa-split {
     display: flex;
     flex-direction: column;
@@ -1461,7 +1461,7 @@ ul, ol {
 
 }
 
-/* ===== Página gracias (Next.js) ===== */
+/* ===== PÃ¡gina gracias (Next.js) ===== */
 .gracias-page {
   min-height: 100svh;
   display: grid;
@@ -1501,471 +1501,4 @@ ul, ol {
   text-decoration: none;
   border-radius: 999px;
   font-weight: 600;
-}
-
-/* ===== Misiones / tienda ===== */
-.missions-page {
-  padding: 6rem 0 4rem;
-  background: var(--color-off-white);
-  min-height: 100svh;
-}
-
-.missions-breadcrumb {
-  display: inline-block;
-  margin-bottom: 1.5rem;
-  color: var(--color-primary);
-  text-decoration: none;
-  font-weight: 600;
-}
-
-.missions-page__header {
-  text-align: center;
-  margin-bottom: 2.5rem;
-}
-
-.missions-page__header h1 {
-  font-family: var(--font-display);
-  font-size: clamp(1.8rem, 4vw, 2.6rem);
-  color: var(--color-primary);
-  margin-bottom: 0.75rem;
-}
-
-.missions-empty {
-  text-align: center;
-  color: var(--color-text-soft);
-  padding: 2rem 0;
-}
-
-.missions-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
-  gap: 1.5rem;
-}
-
-.mission-card {
-  display: flex;
-  flex-direction: column;
-  text-decoration: none;
-  color: inherit;
-  background: var(--color-white);
-  border-radius: var(--radius-md);
-  overflow: hidden;
-  box-shadow: var(--shadow-card);
-  transition: transform 0.2s ease, box-shadow 0.2s ease;
-}
-
-.mission-card:hover {
-  transform: translateY(-4px);
-  box-shadow: var(--shadow-lg);
-}
-
-.mission-card__media {
-  position: relative;
-  aspect-ratio: 4 / 5;
-  background: var(--color-tint);
-}
-
-.mission-card__media img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-}
-
-.mission-card__placeholder {
-  width: 100%;
-  height: 100%;
-  background: linear-gradient(135deg, var(--color-tint), var(--color-primary-soft));
-}
-
-.mission-card__badge {
-  position: absolute;
-  top: 0.75rem;
-  left: 0.75rem;
-  background: #2b6cb0;
-  color: #fff;
-  font-size: 0.7rem;
-  font-weight: 700;
-  letter-spacing: 0.04em;
-  padding: 0.35rem 0.55rem;
-}
-
-.mission-card__body {
-  padding: 1rem;
-  text-align: center;
-}
-
-.mission-card__date {
-  font-size: 0.8rem;
-  color: var(--color-text-soft);
-  margin-bottom: 0.35rem;
-}
-
-.mission-card__body h3 {
-  font-family: var(--font-display);
-  font-size: 1rem;
-  line-height: 1.35;
-  margin-bottom: 0.5rem;
-  color: var(--color-primary);
-}
-
-.mission-card__body p {
-  font-size: 0.9rem;
-  color: var(--color-text-soft);
-}
-
-.mission-card__price {
-  margin-top: 0.75rem;
-  padding-top: 0.75rem;
-  border-top: 1px solid var(--color-border);
-  font-weight: 700;
-  color: var(--color-text);
-}
-
-.missions-more {
-  text-align: center;
-  margin-top: 2rem;
-}
-
-.mission-detail {
-  padding: 6rem 0 4rem;
-  background: var(--color-off-white);
-}
-
-.mission-detail__grid {
-  display: grid;
-  gap: 2rem;
-  margin-top: 1rem;
-}
-
-@media (min-width: 900px) {
-  .mission-detail__grid {
-    grid-template-columns: 1fr 1fr;
-    align-items: start;
-  }
-}
-
-.mission-detail__media img {
-  width: 100%;
-  border-radius: var(--radius-md);
-  box-shadow: var(--shadow-card);
-}
-
-.mission-detail__info h1 {
-  font-family: var(--font-display);
-  font-size: clamp(1.5rem, 3vw, 2.2rem);
-  color: var(--color-primary);
-  margin: 0.5rem 0 1rem;
-}
-
-.mission-buy__price {
-  font-size: 1.75rem;
-  font-weight: 700;
-  margin-bottom: 1.25rem;
-}
-
-.mission-buy__qty {
-  margin-bottom: 1rem;
-}
-
-.qty-control {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.75rem;
-  margin-top: 0.35rem;
-}
-
-.qty-control button {
-  width: 2rem;
-  height: 2rem;
-  border: 1px solid var(--color-border);
-  border-radius: 999px;
-  background: var(--color-white);
-  cursor: pointer;
-  font-size: 1.1rem;
-}
-
-.btn--block {
-  width: 100%;
-  text-align: center;
-}
-
-.mission-detail__desc {
-  margin-top: 3rem;
-  padding-top: 2rem;
-  border-top: 1px solid var(--color-border);
-}
-
-.mission-detail__text p {
-  margin-bottom: 0.75rem;
-  line-height: 1.7;
-  color: var(--color-text-soft);
-}
-
-.cart-page h1 {
-  font-family: var(--font-display);
-  color: var(--color-primary);
-  margin-bottom: 1.5rem;
-}
-
-.cart-list {
-  list-style: none;
-  display: grid;
-  gap: 1rem;
-}
-
-.cart-item {
-  display: grid;
-  grid-template-columns: 64px 1fr auto auto;
-  gap: 1rem;
-  align-items: center;
-  background: var(--color-white);
-  padding: 1rem;
-  border-radius: var(--radius-md);
-  box-shadow: var(--shadow-card);
-}
-
-.cart-item img {
-  width: 64px;
-  height: 64px;
-  object-fit: cover;
-  border-radius: var(--radius-sm);
-}
-
-.cart-remove {
-  background: none;
-  border: none;
-  color: var(--color-primary);
-  cursor: pointer;
-  text-decoration: underline;
-}
-
-.cart-total {
-  margin: 1.5rem 0;
-  font-size: 1.2rem;
-}
-
-.checkout-form {
-  max-width: 28rem;
-  display: grid;
-  gap: 1rem;
-}
-
-.checkout-form label {
-  display: grid;
-  gap: 0.35rem;
-  font-weight: 600;
-}
-
-.checkout-form input {
-  padding: 0.75rem 1rem;
-  border: 1px solid var(--color-border);
-  border-radius: var(--radius-sm);
-}
-
-.checkout-note {
-  font-size: 0.9rem;
-  color: var(--color-text-soft);
-  margin-bottom: 0.25rem;
-}
-
-.checkout-error {
-  color: #b42318;
-  background: rgba(180, 35, 24, 0.08);
-  padding: 0.75rem 1rem;
-  border-radius: var(--radius-sm);
-}
-
-/* ===== Admin ===== */
-.admin-login {
-  min-height: 100svh;
-  display: grid;
-  place-items: center;
-  background: var(--color-off-white);
-  padding: 2rem;
-}
-
-.admin-login__card {
-  width: 100%;
-  max-width: 24rem;
-  background: var(--color-white);
-  padding: 2rem;
-  border-radius: var(--radius-lg);
-  box-shadow: var(--shadow-card);
-  display: grid;
-  gap: 1rem;
-}
-
-.admin-login__card h1 {
-  font-family: var(--font-display);
-  color: var(--color-primary);
-  font-size: 1.4rem;
-}
-
-.admin-nav {
-  background: var(--color-primary);
-  color: var(--color-white);
-}
-
-.admin-nav__inner {
-  max-width: 1100px;
-  margin: 0 auto;
-  padding: 1rem 1.25rem;
-  display: flex;
-  flex-wrap: wrap;
-  gap: 1rem;
-  align-items: center;
-  justify-content: space-between;
-}
-
-.admin-nav__brand {
-  color: var(--color-white);
-  text-decoration: none;
-  font-weight: 700;
-}
-
-.admin-nav__links {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 0.75rem 1rem;
-  align-items: center;
-}
-
-.admin-nav__links a,
-.admin-nav__links button {
-  color: var(--color-white);
-  text-decoration: none;
-  background: none;
-  border: none;
-  cursor: pointer;
-  font: inherit;
-  opacity: 0.9;
-}
-
-.admin-nav__links a.is-active {
-  text-decoration: underline;
-  opacity: 1;
-}
-
-.admin-main {
-  background: var(--color-off-white);
-  min-height: calc(100svh - 4rem);
-}
-
-.admin-page {
-  max-width: 900px;
-  margin: 0 auto;
-  padding: 2rem 1.25rem 4rem;
-}
-
-.admin-page__head {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 1rem;
-  align-items: center;
-  justify-content: space-between;
-  margin-bottom: 1.5rem;
-}
-
-.admin-cards {
-  display: grid;
-  gap: 1rem;
-  margin-top: 1.5rem;
-}
-
-@media (min-width: 640px) {
-  .admin-cards {
-    grid-template-columns: 1fr 1fr;
-  }
-}
-
-.admin-card {
-  background: var(--color-white);
-  padding: 1.5rem;
-  border-radius: var(--radius-md);
-  box-shadow: var(--shadow-card);
-  text-decoration: none;
-  color: inherit;
-}
-
-.admin-card h2 {
-  color: var(--color-primary);
-  font-family: var(--font-display);
-  margin-bottom: 0.5rem;
-}
-
-.admin-form {
-  display: grid;
-  gap: 1rem;
-  margin-top: 1.5rem;
-}
-
-.admin-form label {
-  display: grid;
-  gap: 0.35rem;
-  font-weight: 600;
-}
-
-.admin-form input,
-.admin-form textarea {
-  padding: 0.75rem 1rem;
-  border: 1px solid var(--color-border);
-  border-radius: var(--radius-sm);
-  font: inherit;
-}
-
-.admin-form__check {
-  display: flex !important;
-  align-items: center;
-  gap: 0.5rem;
-  font-weight: 500;
-}
-
-.admin-form__preview {
-  max-width: 240px;
-  border-radius: var(--radius-sm);
-  margin-top: 0.5rem;
-}
-
-.admin-form__error {
-  color: #b42318;
-}
-
-.admin-form__ok {
-  color: #067647;
-}
-
-.admin-table {
-  display: grid;
-  gap: 0.75rem;
-}
-
-.admin-table__row {
-  display: grid;
-  grid-template-columns: 56px 1fr auto;
-  gap: 1rem;
-  align-items: center;
-  background: var(--color-white);
-  padding: 1rem;
-  border-radius: var(--radius-md);
-}
-
-.admin-table__thumb {
-  width: 56px;
-  height: 56px;
-  object-fit: cover;
-  border-radius: var(--radius-sm);
-}
-
-.admin-table__actions {
-  display: flex;
-  gap: 0.75rem;
-  align-items: center;
-}
-
-.admin-danger {
-  background: none;
-  border: none;
-  color: #b42318;
-  cursor: pointer;
-  text-decoration: underline;
 }

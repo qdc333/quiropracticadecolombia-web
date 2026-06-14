@@ -1,9 +1,6 @@
 import LandingPage from "@/components/LandingPage";
-import { getMissions, getPublicContent } from "@/lib/api";
+import { DEFAULT_CONTACT, DEFAULT_HERO } from "@/lib/content";
 
-export default async function Home() {
-  const { hero, contact } = await getPublicContent();
-  const missions = await getMissions(6);
-
-  return <LandingPage hero={hero} contact={contact} missions={missions} />;
+export default function Home() {
+  return <LandingPage hero={DEFAULT_HERO} contact={DEFAULT_CONTACT} />;
 }

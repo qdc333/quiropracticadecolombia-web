@@ -30,11 +30,3 @@ export const DEFAULT_CONTACT: ContactContent = {
   mapsUrl: "https://maps.app.goo.gl/7UGYRBFWCHzx1WNH7",
   diagnosticoFormUrl: SITE.diagnosticoFormUrl,
 };
-
-export function formatPrice(amount: number, currency = "COP") {
-  return new Intl.NumberFormat("es-CO", {
-    style: "currency",
-    currency,
-    maximumFractionDigits: 0,
-  }).format(amount);
-}
