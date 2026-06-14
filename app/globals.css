@@ -1675,54 +1675,80 @@ ul, ol {
     align-items: center;
   }
 
-  .causa-gallery {
-    position: sticky;
-    top: calc(var(--header-h) + 1.25rem);
-    width: 100%;
-  }
-
-  .causa-photo img,
-  .metodo-media .section-photo,
-  .nosotros-media .section-photo--full {
-    width: 100%;
-    max-height: min(52vh, 520px);
-    height: auto;
-    object-fit: contain;
-    object-position: center top;
-    background: var(--color-white);
-    box-shadow: none;
-  }
-
-  .nosotros-media .section-photo--full {
-    object-position: center center;
-    max-height: min(56vh, 560px);
-  }
-
+  .causa-gallery,
   .metodo-media,
   .nosotros-media {
-    position: sticky;
-    top: calc(var(--header-h) + 1.25rem);
     width: 100%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    background: var(--color-white);
-    border-radius: var(--radius-lg);
-    box-shadow: var(--shadow-card);
-  }
-
-  .nosotros-media {
-    min-height: min(48vh, 460px);
-  }
-
-  .causa-photo {
-    display: flex;
-    flex-direction: column;
+    align-self: center;
   }
 
   .causa-photo img {
-    flex: 1;
-    min-height: 0;
+    width: 100%;
+    height: auto;
+    object-fit: contain;
+    object-position: center;
+  }
+
+  .metodo-media .section-photo--tall,
+  .nosotros-media .section-photo--full {
+    width: 100%;
+    height: auto;
+    max-height: none;
+    aspect-ratio: auto;
+    object-fit: contain;
+    object-position: center;
+  }
+
+  /* Espacio uniforme: etiqueta → título → párrafo (una línea) */
+  .causa-body {
+    gap: 0.65rem;
+  }
+
+  .metodo-content,
+  .nosotros-content {
+    display: flex;
+    flex-direction: column;
+    gap: 0.65rem;
+  }
+
+  .causa-split .section-header {
+    margin-bottom: 0;
+  }
+
+  .section-header {
+    margin-bottom: 1rem;
+  }
+
+  .section-header h2,
+  .metodo-content h2,
+  .nosotros-content h2 {
+    margin-bottom: 0;
+  }
+
+  .section-tag,
+  .metodo-content .section-tag,
+  .nosotros-content .section-tag {
+    margin-bottom: 0.35rem;
+  }
+
+  .metodo-pillars {
+    margin-top: 0.35rem;
+  }
+
+  .trust-badges {
+    margin-top: 0.35rem;
+  }
+
+  .efecto-card h3 {
+    margin-bottom: 0.15rem;
+  }
+
+  .efecto-card p {
+    margin-top: 0;
+  }
+
+  .metodo-pillars strong {
+    margin-bottom: 0.1rem;
   }
 
   .efecto-grid {
@@ -1929,12 +1955,6 @@ ul, ol {
 
   .causa-split {
     gap: 3rem;
-  }
-
-  .causa-photo img,
-  .metodo-media .section-photo,
-  .nosotros-media .section-photo--full {
-    max-height: min(54vh, 540px);
   }
 
   .symptoms-grid {
