@@ -1,17 +1,23 @@
 "use client";
 
-import { FormEvent, useEffect, useRef, useState } from "react";
+import { FormEvent, useEffect, useState } from "react";
 import { SITE, buildWaUrl } from "@/lib/site";
 
+function buildThankYouUrl() {
+  if (typeof window !== "undefined") {
+    return `${window.location.origin}/gracias`;
+  }
+  const base = process.env.NEXT_PUBLIC_SITE_URL?.replace(/\/$/, "");
+  return base ? `${base}/gracias` : "";
+}
+
 export default function ConsultaForm() {
-  const nextInputRef = useRef<HTMLInputElement>(null);
+  const [thankYouUrl, setThankYouUrl] = useState(buildThankYouUrl);
   const [status, setStatus] = useState("");
   const [statusType, setStatusType] = useState<"" | "success" | "error">("");
 
   useEffect(() => {
-    if (nextInputRef.current) {
-      nextInputRef.current.value = `${window.location.origin}/gracias`;
-    }
+    setThankYouUrl(`${window.location.origin}/gracias`);
   }, []);
 
   function setFormStatus(text: string, type: "" | "success" | "error" = "") {
@@ -20,10 +26,10 @@ export default function ConsultaForm() {
   }
 
   function handleSubmit(e: FormEvent<HTMLFormElement>) {
+    e.preventDefault();
     const form = e.currentTarget;
     const honey = form.querySelector<HTMLInputElement>('input[name="_honey"]');
     if (honey?.value) {
-      e.preventDefault();
       return;
     }
 
@@ -34,9 +40,10 @@ export default function ConsultaForm() {
     const mensaje = (form.elements.namedItem("mensaje") as HTMLTextAreaElement).value.trim();
     const subjectInput = form.querySelector<HTMLInputElement>('input[name="_subject"]');
     const replyInput = form.querySelector<HTMLInputElement>('input[name="_replyto"]');
+    const nextInput = form.querySelector<HTMLInputElement>('input[name="_next"]');
+    const urlInput = form.querySelector<HTMLInputElement>('input[name="_url"]');
 
     if (!nombre || !telefono || !sintoma || !mensaje) {
-      e.preventDefault();
       setFormStatus("Completa los campos obligatorios.", "error");
       return;
     }
@@ -48,7 +55,16 @@ export default function ConsultaForm() {
       replyInput.value = correo;
     }
 
+    const redirectUrl = `${window.location.origin}/gracias`;
+    if (nextInput) {
+      nextInput.value = redirectUrl;
+    }
+    if (urlInput) {
+      urlInput.value = window.location.href;
+    }
+
     setFormStatus("Enviando solicitud…", "");
+    form.submit();
   }
 
   return (
@@ -62,15 +78,17 @@ export default function ConsultaForm() {
       <form
         id="consulta-form"
         className="consulta-form"
-        action={`https://formsubmit.co/${encodeURIComponent(SITE.formEmail)}`}
+        action={`https://formsubmit.co/${SITE.formEmail}`}
         method="POST"
+        encType="application/x-www-form-urlencoded"
         noValidate
         onSubmit={handleSubmit}
       >
         <input type="hidden" name="_subject" value="Nuevo paciente web — Quiropráctica de Colombia" />
         <input type="hidden" name="_template" value="table" />
         <input type="hidden" name="_captcha" value="true" />
-        <input type="hidden" name="_next" ref={nextInputRef} defaultValue="/gracias" />
+        <input type="hidden" name="_next" value={thankYouUrl} readOnly />
+        <input type="hidden" name="_url" defaultValue="" readOnly />
 
         <div className="form-row">
           <label htmlFor="nombre">
