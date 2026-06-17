@@ -21,12 +21,13 @@ import {
 import { useEffect } from "react";
 import ConsultaForm from "@/components/ConsultaForm";
 import Footer from "@/components/Footer";
+import GoogleReviewsSection from "@/components/GoogleReviewsSection";
 import Header from "@/components/Header";
 import WhatsAppFloat from "@/components/WhatsAppFloat";
 import { useInstagramStats } from "@/hooks/useInstagramStats";
 import { useReveal } from "@/hooks/useReveal";
 import { useScrollSpy } from "@/hooks/useScrollSpy";
-import type { ContactContent, HeroContent } from "@/lib/content";
+import { DEFAULT_GOOGLE_REVIEWS, type ContactContent, type HeroContent } from "@/lib/content";
 import { buildWaUrl } from "@/lib/site";
 
 function statClass(value: string) {
@@ -99,10 +100,12 @@ export default function LandingPage({ hero, contact }: Props) {
             </div>
           </div>
 
-          <a href="#causa" className="hero-scroll" aria-label="Ir a la siguiente sección">
+          <a href="#resenas" className="hero-scroll" aria-label="Ir a la siguiente sección">
             <span className="hero-scroll-icon" />
           </a>
         </section>
+
+        <GoogleReviewsSection content={DEFAULT_GOOGLE_REVIEWS} />
 
         <section className="section section--tint" id="causa" aria-labelledby="causa-title">
           <div className="container">

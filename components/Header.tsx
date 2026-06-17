@@ -4,6 +4,7 @@ import { useCallback, useEffect, useState } from "react";
 
 const NAV_ITEMS = [
   { href: "#inicio", label: "Inicio" },
+  { href: "#resenas", label: "Reseñas" },
   { href: "#causa", label: "La causa" },
   { href: "#especialidad", label: "Especialidad" },
   { href: "#metodo", label: "Método" },
