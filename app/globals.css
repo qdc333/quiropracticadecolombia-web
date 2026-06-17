@@ -964,6 +964,43 @@ ul, ol {
   .review-card-text {
     font-size: 0.98rem;
   }
+
+  .review-card-footer {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    min-height: 2rem;
+    row-gap: 0;
+  }
+
+  .review-step:first-child,
+  .review-step:last-child {
+    position: relative;
+    z-index: 1;
+    flex: 0 0 5.75rem;
+    width: 5.75rem;
+  }
+
+  .review-step:first-child {
+    justify-self: auto;
+    text-align: left;
+  }
+
+  .review-step:last-child {
+    justify-self: auto;
+    text-align: right;
+  }
+
+  .review-progress {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    width: max-content;
+    max-width: calc(100% - 12.5rem);
+    flex-wrap: nowrap;
+  }
 }
 
 /* ===== Symptoms ===== */
