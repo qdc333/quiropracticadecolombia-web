@@ -1,12 +1,19 @@
+"use client";
+
+import { useLocale } from "@/components/LocaleProvider";
+import { WHATSAPP_UI_EN, WHATSAPP_UI_ES } from "@/lib/i18n/content-en";
 import { buildWaUrl } from "@/lib/site";
 
 export default function WhatsAppFloat() {
+  const { locale } = useLocale();
+  const ui = locale === "en" ? WHATSAPP_UI_EN : WHATSAPP_UI_ES;
+
   return (
     <a
       href={buildWaUrl("general")}
       className="whatsapp-float"
       id="whatsapp-float"
-      aria-label="Escribir por WhatsApp"
+      aria-label={ui.ariaLabel}
       title="WhatsApp"
       target="_blank"
       rel="noopener noreferrer"

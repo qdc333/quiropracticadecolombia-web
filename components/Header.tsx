@@ -1,20 +1,13 @@
 "use client";
 
+import { useLocale } from "@/components/LocaleProvider";
+import { getNavItems } from "@/lib/i18n/nav";
 import { useCallback, useEffect, useState } from "react";
-
-const NAV_ITEMS = [
-  { href: "#inicio", label: "Inicio" },
-  { href: "#resenas", label: "Reseñas" },
-  { href: "#causa", label: "La causa" },
-  { href: "#especialidad", label: "Especialidad" },
-  { href: "#metodo", label: "Método" },
-  { href: "#nosotros", label: "Nosotros" },
-  { href: "#redes", label: "Redes" },
-  { href: "#contacto", label: "Agendar", cta: true },
-];
 
 export default function Header() {
   const [open, setOpen] = useState(false);
+  const { locale, setLocale } = useLocale();
+  const navItems = getNavItems(locale);
 
   const close = useCallback(() => {
     setOpen(false);
@@ -54,19 +47,6 @@ export default function Header() {
           </span>
         </a>
 
-        <button
-          className="nav-toggle"
-          type="button"
-          aria-expanded={open}
-          aria-controls="nav-menu"
-          aria-label={open ? "Cerrar menú" : "Abrir menú"}
-          onClick={toggle}
-        >
-          <span className="nav-toggle-bar" />
-          <span className="nav-toggle-bar" />
-          <span className="nav-toggle-bar" />
-        </button>
-
         <div
           className={`nav-backdrop${open ? " is-visible" : ""}`}
           id="nav-backdrop"
@@ -76,11 +56,11 @@ export default function Header() {
 
         <nav className={`nav${open ? " is-open" : ""}`} id="nav-menu" aria-label="Secciones del sitio">
           <ul className="nav-list">
-            {NAV_ITEMS.map((item) => (
+            {navItems.map((item) => (
               <li key={item.href}>
                 <a
                   href={item.href}
-                  className={`nav-link${"cta" in item && item.cta ? " nav-link--cta" : ""}`}
+                  className={`nav-link${item.cta ? " nav-link--cta" : ""}`}
                   onClick={item.href.startsWith("#") ? close : undefined}
                 >
                   {item.label}
@@ -89,6 +69,40 @@ export default function Header() {
             ))}
           </ul>
         </nav>
+
+        <div className="header-end">
+          <div className="lang-switch" role="group" aria-label={locale === "en" ? "Language" : "Idioma"}>
+            <button
+              type="button"
+              className={`lang-switch-btn${locale === "es" ? " is-active" : ""}`}
+              onClick={() => setLocale("es")}
+              aria-pressed={locale === "es"}
+            >
+              ES
+            </button>
+            <button
+              type="button"
+              className={`lang-switch-btn${locale === "en" ? " is-active" : ""}`}
+              onClick={() => setLocale("en")}
+              aria-pressed={locale === "en"}
+            >
+              EN
+            </button>
+          </div>
+
+          <button
+            className="nav-toggle"
+            type="button"
+            aria-expanded={open}
+            aria-controls="nav-menu"
+            aria-label={open ? "Cerrar menú" : "Abrir menú"}
+            onClick={toggle}
+          >
+            <span className="nav-toggle-bar" />
+            <span className="nav-toggle-bar" />
+            <span className="nav-toggle-bar" />
+          </button>
+        </div>
       </div>
     </header>
   );

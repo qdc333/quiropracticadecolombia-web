@@ -5,6 +5,8 @@ out
 .env*.local
 *.tsbuildinfo
 public/uploads
+content/site-content.json
+public/images/cms/
 
 legacy/
 frontend/

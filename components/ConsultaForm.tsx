@@ -1,6 +1,8 @@
 "use client";
 
 import { FormEvent, useEffect, useState } from "react";
+import { FORM_UI_EN, FORM_UI_ES } from "@/lib/i18n/content-en";
+import type { Locale } from "@/lib/i18n/locale";
 import { SITE, buildWaUrl } from "@/lib/site";
 
 function buildThankYouUrl() {
@@ -11,7 +13,12 @@ function buildThankYouUrl() {
   return base ? `${base}/gracias` : "";
 }
 
-export default function ConsultaForm() {
+type Props = {
+  locale?: Locale;
+};
+
+export default function ConsultaForm({ locale = "es" }: Props) {
+  const ui = locale === "en" ? FORM_UI_EN : FORM_UI_ES;
   const [thankYouUrl, setThankYouUrl] = useState(buildThankYouUrl);
   const [status, setStatus] = useState("");
   const [statusType, setStatusType] = useState<"" | "success" | "error">("");
@@ -44,12 +51,12 @@ export default function ConsultaForm() {
     const urlInput = form.querySelector<HTMLInputElement>('input[name="_url"]');
 
     if (!nombre || !telefono || !sintoma || !mensaje) {
-      setFormStatus("Completa los campos obligatorios.", "error");
+      setFormStatus(ui.errorRequired, "error");
       return;
     }
 
     if (subjectInput) {
-      subjectInput.value = `Nuevo paciente web — ${sintoma} — ${nombre}`;
+      subjectInput.value = `${ui.subjectPrefix} ${sintoma} — ${nombre}`;
     }
     if (replyInput && correo) {
       replyInput.value = correo;
@@ -63,17 +70,14 @@ export default function ConsultaForm() {
       urlInput.value = window.location.href;
     }
 
-    setFormStatus("Enviando solicitud…", "");
+    setFormStatus(ui.sending, "");
     form.submit();
   }
 
   return (
     <div className="contact-form-wrap">
-      <h3 className="form-title">Solicitud de consulta</h3>
-      <p className="form-desc">
-        Completa este formulario. La información llegará al correo de la clínica para que el Dr.
-        Kevin haga el filtro inicial.
-      </p>
+      <h3 className="form-title">{ui.title}</h3>
+      <p className="form-desc">{ui.desc}</p>
 
       <form
         id="consulta-form"
@@ -84,7 +88,7 @@ export default function ConsultaForm() {
         noValidate
         onSubmit={handleSubmit}
       >
-        <input type="hidden" name="_subject" value="Nuevo paciente web — Quiropráctica de Colombia" />
+        <input type="hidden" name="_subject" value={ui.hiddenSubject} />
         <input type="hidden" name="_template" value="table" />
         <input type="hidden" name="_captcha" value="true" />
         <input type="hidden" name="_next" value={thankYouUrl} readOnly />
@@ -92,55 +96,55 @@ export default function ConsultaForm() {
 
         <div className="form-row">
           <label htmlFor="nombre">
-            Nombre completo <span aria-hidden="true">*</span>
+            {ui.name} <span aria-hidden="true">*</span>
           </label>
-          <input type="text" id="nombre" name="nombre" required autoComplete="name" placeholder="Tu nombre" />
+          <input type="text" id="nombre" name="nombre" required autoComplete="name" placeholder={ui.namePlaceholder} />
         </div>
         <div className="form-row">
           <label htmlFor="telefono">
-            Teléfono / WhatsApp <span aria-hidden="true">*</span>
+            {ui.phone} <span aria-hidden="true">*</span>
           </label>
           <input type="tel" id="telefono" name="telefono" required autoComplete="tel" placeholder="+57 300 000 0000" />
         </div>
         <div className="form-row">
-          <label htmlFor="email-paciente">Correo (opcional)</label>
+          <label htmlFor="email-paciente">{ui.emailOptional}</label>
           <input
             type="email"
             id="email-paciente"
             name="correo_paciente"
             autoComplete="email"
-            placeholder="correo@ejemplo.com"
+            placeholder={ui.emailPlaceholder}
           />
         </div>
         <div className="form-row">
           <label htmlFor="sintoma">
-            Síntoma principal <span aria-hidden="true">*</span>
+            {ui.symptom} <span aria-hidden="true">*</span>
           </label>
           <select id="sintoma" name="sintoma" required defaultValue="">
-            <option value="">Selecciona una opción</option>
-            <option value="Vértigo o mareos">Vértigo o mareos</option>
-            <option value="Migrañas o cefaleas">Migrañas o cefaleas</option>
-            <option value="Tinnitus (zumbido)">Tinnitus (zumbido)</option>
-            <option value="Neuralgia del trigémino">Neuralgia del trigémino</option>
-            <option value="Otro / varios síntomas">Otro / varios síntomas</option>
+            <option value="">{ui.selectPlaceholder}</option>
+            {ui.symptoms.map((label) => (
+              <option key={label} value={label}>
+                {label}
+              </option>
+            ))}
           </select>
         </div>
         <div className="form-row">
           <label htmlFor="mensaje">
-            Cuéntanos brevemente tu caso <span aria-hidden="true">*</span>
+            {ui.message} <span aria-hidden="true">*</span>
           </label>
           <textarea
             id="mensaje"
             name="mensaje"
             rows={4}
             required
-            placeholder="Desde cuándo tienes el síntoma, qué has probado, etc."
+            placeholder={ui.messagePlaceholder}
           />
         </div>
         <input type="text" name="_honey" className="form-honey" tabIndex={-1} autoComplete="off" aria-hidden="true" />
         <input type="hidden" name="_replyto" defaultValue="" />
         <button type="submit" className="btn btn--primary btn--large" id="form-submit-btn">
-          Enviar solicitud al doctor
+          {ui.submit}
         </button>
         <p
           className={`form-status${statusType ? ` is-${statusType}` : ""}`}
@@ -151,7 +155,7 @@ export default function ConsultaForm() {
           {status}
         </p>
         <p className="form-note">
-          También puedes escribir directo por{" "}
+          {ui.noteBefore}{" "}
           <a href={buildWaUrl("general")} className="contact-link" target="_blank" rel="noopener noreferrer">
             WhatsApp
           </a>

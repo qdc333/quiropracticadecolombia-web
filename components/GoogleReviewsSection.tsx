@@ -3,17 +3,20 @@
 import { Star } from "lucide-react";
 import { useEffect, useRef, useState } from "react";
 import type { GoogleReviewsContent } from "@/lib/content";
+import { REVIEWS_UI_EN, REVIEWS_UI_ES } from "@/lib/i18n/content-en";
+import type { Locale } from "@/lib/i18n/locale";
 import { highlightReviewText } from "@/lib/reviewKeywords";
 
 type Props = {
   content: GoogleReviewsContent;
+  locale?: Locale;
 };
 
 const AUTOPLAY_MS = 5000;
 
-function ReviewStars({ rating }: { rating: number }) {
+function ReviewStars({ rating, starsAria }: { rating: number; starsAria: (n: number) => string }) {
   return (
-    <div className="review-card-stars" aria-label={`${rating} de 5 estrellas`}>
+    <div className="review-card-stars" aria-label={starsAria(rating)}>
       {Array.from({ length: 5 }, (_, starIndex) => (
         <Star
           key={starIndex}
@@ -27,8 +30,9 @@ function ReviewStars({ rating }: { rating: number }) {
   );
 }
 
-export default function GoogleReviewsSection({ content }: Props) {
+export default function GoogleReviewsSection({ content, locale = "es" }: Props) {
   const { mapsUrl, items } = content;
+  const ui = locale === "en" ? REVIEWS_UI_EN : REVIEWS_UI_ES;
   const sectionRef = useRef<HTMLElement>(null);
   const stageRef = useRef<HTMLDivElement>(null);
   const [index, setIndex] = useState(0);
@@ -102,9 +106,9 @@ export default function GoogleReviewsSection({ content }: Props) {
     >
       <div className="container">
         <div className="reviews-header reviews-animate reviews-animate--1">
-          <span className="section-tag">Pacientes reales</span>
-          <h2 id="resenas-title">Lo que dicen en Google Maps</h2>
-          <p className="reviews-lead">Testimonios reales de quienes confiaron en su proceso de sanación.</p>
+          <span className="section-tag">{ui.tag}</span>
+          <h2 id="resenas-title">{ui.title}</h2>
+          <p className="reviews-lead">{ui.lead}</p>
         </div>
 
         {total > 0 && (
@@ -130,16 +134,16 @@ export default function GoogleReviewsSection({ content }: Props) {
               className={`review-card review-card--${direction}`}
               aria-live="polite"
             >
-              <ReviewStars rating={current.rating} />
+              <ReviewStars rating={current.rating} starsAria={ui.starsAria} />
               <h3 className="review-card-author">{current.author}</h3>
               <p className="review-card-text">{highlightReviewText(current.text)}</p>
 
               {total > 1 && (
                 <footer className="review-card-footer">
                   <button type="button" className="review-step" onClick={goPrev}>
-                    Anterior
+                    {ui.prev}
                   </button>
-                  <div className="review-progress" role="tablist" aria-label="Elegir reseña">
+                  <div className="review-progress" role="tablist" aria-label={ui.chooseReview}>
                     {items.map((_, dotIndex) => (
                       <button
                         key={dotIndex}
@@ -153,7 +157,7 @@ export default function GoogleReviewsSection({ content }: Props) {
                     ))}
                   </div>
                   <button type="button" className="review-step" onClick={goNext}>
-                    Siguiente
+                    {ui.next}
                   </button>
                 </footer>
               )}
@@ -168,7 +172,7 @@ export default function GoogleReviewsSection({ content }: Props) {
             target="_blank"
             rel="noopener noreferrer"
           >
-            Ver todas en Google Maps
+            {ui.seeOnMaps}
           </a>
         </div>
       </div>

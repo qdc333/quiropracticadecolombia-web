@@ -1,26 +1,25 @@
+import { LocaleProvider } from "@/components/LocaleProvider";
 import type { Metadata, Viewport } from "next";
-import { Manrope, Newsreader } from "next/font/google";
+import "../styles/shared.css";
 import "../globals.css";
 
-const manrope = Manrope({
-  subsets: ["latin"],
-  variable: "--font-body-next",
-  display: "swap",
-});
+function resolveSiteUrl() {
+  const raw = process.env.NEXT_PUBLIC_SITE_URL?.trim();
+  if (!raw) return new URL("https://www.quiropracticadecolombia.com");
+  try {
+    return new URL(raw.includes("://") ? raw : `https://${raw}`);
+  } catch {
+    return new URL("https://www.quiropracticadecolombia.com");
+  }
+}
 
-const newsreader = Newsreader({
-  subsets: ["latin"],
-  variable: "--font-display-next",
-  display: "swap",
-});
-
-const siteUrl = process.env.NEXT_PUBLIC_SITE_URL ?? "https://REEMPLAZA-TU-URL";
+const siteUrl = resolveSiteUrl().origin;
 
 export const metadata: Metadata = {
   title: "Quiropráctica de Colombia | Dr. Kevin Ernesto",
   description:
     "Quiropráctica de Colombia — Especialistas en cuidados cervicales superiores en Barranquilla. Tratamiento natural para vértigo, migrañas, tinnitus y más.",
-  metadataBase: new URL(siteUrl),
+  metadataBase: resolveSiteUrl(),
   robots: "index, follow",
   openGraph: {
     title: "Quiropráctica de Colombia | Dr. Kevin Ernesto",
@@ -73,12 +72,12 @@ const jsonLd = {
 
 export default function SiteLayout({ children }: { children: React.ReactNode }) {
   return (
-    <div className={`site-root ${manrope.variable} ${newsreader.variable}`}>
+    <div className="site-root">
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
       />
-      {children}
+      <LocaleProvider>{children}</LocaleProvider>
     </div>
   );
 }

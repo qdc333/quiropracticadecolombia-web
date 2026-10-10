@@ -1,6 +1,9 @@
 import LandingPage from "@/components/LandingPage";
-import { DEFAULT_CONTACT, DEFAULT_HERO } from "@/lib/content";
+import { getSiteContent } from "@/lib/cms/repository";
 
-export default function Home() {
-  return <LandingPage hero={DEFAULT_HERO} contact={DEFAULT_CONTACT} />;
+export const dynamic = "force-dynamic";
+
+export default async function Home() {
+  const initialContent = await getSiteContent();
+  return <LandingPage initialContent={initialContent} />;
 }
