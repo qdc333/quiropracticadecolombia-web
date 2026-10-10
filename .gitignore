@@ -6,7 +6,8 @@ out
 *.tsbuildinfo
 public/uploads
 content/site-content.json
-public/images/cms/
+# Fotos del CMS en public/images/cms/ SÍ van a git/Vercel (rutas /images/cms/...)
+# Subidas nuevas desde admin en Vercel no persisten en disco; en local puedes commitearlas.
 
 legacy/
 frontend/
